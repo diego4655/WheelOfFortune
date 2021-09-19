@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +13,26 @@ namespace WebApplication.Controllers
     [ApiController]
     public class ChageStateBetController : ControllerBase
     {
-        // GET: api/<ChageStateController>
+        private readonly IDatabase _database;
+
+        public ChageStateBetController(IDatabase database)
+        {
+            //database redis connection
+            _database = database;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        public string Get([FromQuery]int id)
         {
-            return new string[] { "value1", "value2" };
+            string idBet = _database.StringGet("Id");
+            if (Int32.Parse(idBet) == id) {
+                return "Exitosa";
+            }
+
+            return "Denegada";
+
         }
 
-        // GET api/<ChageStateController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<ChageStateController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<ChageStateController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<ChageStateController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
+       
     }
 }
