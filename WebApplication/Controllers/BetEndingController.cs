@@ -48,15 +48,20 @@ namespace WebApplication.Controllers
         [HttpGet]
         public IEnumerable<String> Get()
         {
+            //get last id from redis
             string Id = _database.StringGet("Id");
+            //get values of result bet
             Dictionary<int, string> WinValues = ResultBet();
+            //get values from database
             HashEntry[] showReturn = _database.HashGetAll(Id);
+            //list to get all values of showReturn
             List<string> seeValues = new List<string>();
             for (int i = 0; i < showReturn.Length; i++)
             {
                 seeValues.Add(showReturn[i].ToString());
                 
             }
+            //variables to get information of foreach
             int position;    
             string NumForeach =null;
             string ColForeach = null;
@@ -83,6 +88,7 @@ namespace WebApplication.Controllers
                     PayValueCol = double.Parse(ValForeach) * 1.8;                   
                 } 
             }
+            //get and fill the object
             CloseBet clBet;
             if (PayValueNum != 0) {
                clBet = new CloseBet { id = Id,number = NumForeach,color = ColForeach,value = ValForeach, BetState = "Cerrado", BetValuePay = PayValueNum.ToString() };
@@ -91,7 +97,9 @@ namespace WebApplication.Controllers
             }else {
                 clBet = new CloseBet { id = Id, number = NumForeach, color = ColForeach, value = ValForeach, BetState = "Cerrado", BetValuePay = "0" };
             }
+            //send information
             Post(clBet);
+            //get values from database to return
             HashEntry[] finalReturn = _database.HashGetAll(Id);
             string allValues;
             for (int i = 0; i < finalReturn.Length; i++)

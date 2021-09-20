@@ -28,9 +28,7 @@ namespace WebApplication.Controllers
             if (Int32.Parse(idBet) == id) {
                 return "Exitosa";
             }
-
             return "Denegada";
-
         }
 
        

@@ -44,7 +44,7 @@ namespace WebApplication.Controllers
         [HttpPost]
         public string Post(newBet data)
         {
-            _database.StringSet(data.keyBet, data.valueBet);
+            _database.StringSet(data.keyBet, data.valueBet);          
             string actualKey = _database.StringGet("Id");
             return actualKey;
         }

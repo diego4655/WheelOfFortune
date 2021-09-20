@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Models
 {
+    //Model to finish the bet
     public class CloseBet
     {
         public string id { get; set; }
