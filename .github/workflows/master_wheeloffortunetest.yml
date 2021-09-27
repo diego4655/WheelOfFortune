@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'WheelOfFortuneTest'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_51A624A594D14CDC9278A621E07E4C71 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E3BF44A07B01446690DDCB0757ADFEAB }}
           package: .
