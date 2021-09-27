@@ -12,5 +12,7 @@ namespace WebApplication
         [Key]
         public int Id { get; set; }
         public string status { get; set; }
+        public int WinNumber { get; set; }
+        public string WinColor { get; set; }
     }
 }

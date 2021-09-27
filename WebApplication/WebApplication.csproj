@@ -16,10 +16,5 @@
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-    <Folder Include="Methods\" />
-  </ItemGroup>
-
 
 </Project>
